@@ -29,10 +29,10 @@ public class FastSortingTest {
 	  	array = RandomArrays.randomIntArray(n);
 	  
 	  	out.print(n+";");
-	  	System.out.println(" ");//n+";"
+	  	System.out.println(n+";");//n+";"
 	  	for(Algorithm algo : Algorithm.values()){
 	  	out.print(time(algo,array)+";");
-	  	System.out.println(""+time(algo,array));
+	  	System.out.println(algo.name()+" tempo:"+time(algo,array));
 	  	}//algo.name()+" tempo:"+time(algo,array)
 	  	out.println();
 	  	System.out.println();
