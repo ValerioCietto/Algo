@@ -1,0 +1,17 @@
+12 sedia
+14 tavolo
+45 scatola
+13 penna
+89 cattedra
+78 proiettore
+46 monitor
+23 laboratorio
+19 mattonella
+18 bottiglietta
+1 matita
+4 polipo
+11 luna
+13 rospo
+15 astronave
+16 cometa
+34 anello
