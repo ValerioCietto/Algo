@@ -39,17 +39,11 @@ public class FastSorting {
 	/**
 	 * Procedura di merge
 	 * 
-	 * @param a
-	 *            porzione di array su cui andare ad eseguire la procedura di
-	 *            merge
-	 * @param fst
-	 *            indice iniziale della porzione da fondere
-	 * @param mid
-	 *            indice dell'elemento centrale
-	 * @param lst
-	 * @param c
-	 *            array ausiliario su cui la procedura si "appoggia" per andare
-	 *            ad inserire gli elementi in ordine
+	 * @param a parte di array su cui verrà eseguito il merge
+	 * @param fst indice primo elemento parte di array
+	 * @param mid indice elemento centrale parte di array
+	 * @param lst indice ultimo elemento parte di array
+	 * @param c array ausiliario. viene sovrascritto.
 	 */
 	private static void MergeWithSingleAuxiliaryArray(int[] a, int fst,
 			int mid, int lst, int[] c) {
@@ -68,15 +62,24 @@ public class FastSorting {
 	}
 
 	/**
-	 * 
-	 * @param a
+	 * Mergesort ottimizzato.
+	 * Prima di eseguire il merge controlla se la porzione è ordinata
+	 * se è ordinata la inserisce direttamente nell'array finale
+	 * @param a array da ordinare
 	 */
 	public static void MergeSortNoMergeOnSorted(int[] a) {
 		int n = a.length;
 		int[] aux = new int[n];
 		MergeSortNoMergeOnSorted(a, 0, n - 1, aux);
 	}
-
+	/**
+	 * metodo privato di MergeSortNoMergeOnSorted
+	 * implementa la chiamata ricorsiva
+	 * @param a parte di array da ordinare
+	 * @param fst indice primo elemento di parte array
+	 * @param lst indice ultimo elemento di parte array
+	 * @param aux array ausiliario 
+	 */
 	private static void MergeSortNoMergeOnSorted(int[] a, int fst, int lst,
 			int[] aux) {
 		if (fst < lst) {
@@ -87,7 +90,15 @@ public class FastSorting {
 				MergeNoMergeOnSorted(a, fst, m, lst, aux);
 		}
 	}
-
+	/**
+	 * metodo privato di MergeNoMergeOnSorted
+	 * serve ad implementare la chiamata ricorsiva
+	 * @param a parte di array da ordinare
+	 * @param fst
+	 * @param mid
+	 * @param lst
+	 * @param c
+	 */
 	private static void MergeNoMergeOnSorted(int[] a, int fst, int mid,
 			int lst, int[] c) {
 		int i = fst, j = mid + 1, k = fst;
