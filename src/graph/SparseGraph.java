@@ -6,21 +6,31 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/**
+ * 
+ * @author valerio
+ *
+ * @param <V>
+ * @param <E>
+ */
 public class SparseGraph<V,E> implements Graph<V,E>{
 	
 	ArrayList<V> nodi;	
 	HashMap<V,ArrayList<E>> archi;
 	int n;
 	int m;
-	
+	/**
+	 * 
+	 */
 	public SparseGraph(){
 		nodi = new ArrayList<V>();
 		archi = new HashMap<V,ArrayList<E>>();
 		n = 0;
 		m = 0;
 	}
-	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean addVertex(V vertex) {
 		if(!nodi.contains(vertex)){
@@ -33,7 +43,9 @@ public class SparseGraph<V,E> implements Graph<V,E>{
 		
 		return false;
 	}
-
+	/**
+	 * 
+	 */
 	@Override
 	public boolean addEdge(V v1, V v2, E info) {
 		if(nodi.contains(v1)){
@@ -138,8 +150,13 @@ public class SparseGraph<V,E> implements Graph<V,E>{
 		for(Arco<V,E> a : neighbors)
 			System.out.println("iniziale: "+a.in+" finale: "+a.fin+" info: "+a.info);
 	}
+	/**
+	 * 
+	 * @param GraphName
+	 * @throws IOException
+	 */
 	public void ToDot(String GraphName) throws IOException{
-		String Graph = GraphName+".dot";
+	  String Graph = GraphName+".dot"; 
 	  FileWriter outFile = new FileWriter(Graph, false);
 	  PrintWriter out = new PrintWriter(outFile);
 	  out.println("digraph "+GraphName+"{");

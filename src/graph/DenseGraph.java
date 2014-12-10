@@ -1,9 +1,17 @@
 package graph;
 
 import java.util.ArrayList;
-
-public class DenseGraph implements Graph{
-
+/**
+ * 
+ * @author valerio
+ * @param <V>
+ *
+ */
+public class DenseGraph<V, E> implements Graph{
+	/**
+	 * 
+	 */
+	
 	@Override
 	public boolean addVertex(Object vertex) {
 		// TODO Auto-generated method stub
@@ -59,10 +67,12 @@ public class DenseGraph implements Graph{
 		return null;
 	}
 
+	
 	@Override
 	public ArrayList neighbors(Object vertex) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 
 }
