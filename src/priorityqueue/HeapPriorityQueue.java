@@ -4,7 +4,8 @@ package priorityqueue;
 import java.util.*;
 
 /**
- * Heap implementato come coda di priorità, con heap a partire dall'indice 0
+ * Heap implementato come coda di priorità,
+ *  con heap a partire dall'indice 0
  * indici:
  * 	-Padre: (i-1)/2
  * 	-Sinistro: (2*i)+1
@@ -23,19 +24,19 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	}
 	
 	Element<V>[]heap;
-	int indiceUltimo;
+	int last;
 	HashMap<V,Integer> position;
 	
 	/**
 	 * Costruttore della coda con priorità
 	 *@param n : grandezza della coda -1
 	 *@param heap : array di elemConPrio, di lunghezza n+1;
-	 *@param indiceUltimo : posizione dell'ultimo elemento, con priorit� massima
+	 *@param last : posizione dell'ultimo elemento, con priorit� massima
 	 *@param position : tabella di hash che associa ad una stringa({@link sabatino.esercizio15.PriorityQueue.HeapPriorityQueue.Element.element} un valore Integer, ovvero l'indice dell'elemento nell'array heap
 	 * */
 	public HeapPriorityQueue(int n){
 		heap = new Element[n+1];
-		indiceUltimo = 0;
+		last = 0;
 		position = new HashMap<V,Integer>(); 
 	}
 	
@@ -44,7 +45,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	 * @param i : indice dell'elemento dello heap da portare verso l'alto
 	 * */
 	private void moveUp(int i){
-		if(i >= indiceUltimo) throw new IllegalArgumentException();
+		if(i >= last) throw new IllegalArgumentException();
 		Element ep = heap[i];
 		while(i>0){
 			if(ep.priority>=heap[(i-1)/2].priority)//lo fa in caso la priorit� dell'elemnto � pi� grande di quella del padre
@@ -58,11 +59,11 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	}
 	
 	private void moveDown(int i){
-		if(i > indiceUltimo) throw new IllegalArgumentException();
+		if(i > last) throw new IllegalArgumentException();
 			Element el = heap[i];
 			int j;
-			while((j=(2*i)+1)<=indiceUltimo){
-				if(j+1<=indiceUltimo && heap[j+1].priority<heap[j].priority) 
+			while((j=(2*i)+1)<=last){
+				if(j+1<=last && heap[j+1].priority<heap[j].priority) 
 					j++;
 				if(el.priority<=heap[j].priority) break;
 				heap[i]=heap[j];
@@ -74,19 +75,19 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	
 	@Override
 	public boolean isEmpty() {
-		if(indiceUltimo==0)return true;
+		if(last==0)return true;
 		return false;
 	}
 
 	@Override
 	public void insert(V element, double priority) {
-		if(indiceUltimo==heap.length) rialloca();
+		if(last==heap.length) rialloca();
 		
 		if(!position.containsKey(element)){	
-			heap[indiceUltimo] = new Element(element,priority);
-			position.put(element, indiceUltimo);
-			indiceUltimo++;
-			moveUp(indiceUltimo-1);
+			heap[last] = new Element(element,priority);
+			position.put(element, last);
+			last++;
+			moveUp(last-1);
 			
 		}
 	}
@@ -100,13 +101,13 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	
 	@Override
 	public V extractfirst() {
-		if(indiceUltimo==0) throw new IllegalArgumentException();
+		if(last==0) throw new IllegalArgumentException();
 		V first = heap[0].element;
-		position.put(null, indiceUltimo);
-		Element last = heap[indiceUltimo-1];
-		heap[indiceUltimo--] = null;
-		if(indiceUltimo>=0){
-			heap[0]=last;
+		position.put(null, last);
+		Element lastElem = heap[last-1];
+		heap[last--] = null;
+		if(last>=0){
+			heap[0]=lastElem;
 			moveDown(0);
 		}
 		position.remove(first);
@@ -122,7 +123,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	public boolean decreasePriority(V element, double newPriority) {
 		if(position.get(element)!=null){
 			int i = position.get(element);
-			if(i>indiceUltimo || i<0) throw new IllegalArgumentException();
+			if(i>last || i<0) throw new IllegalArgumentException();
 			if(heap[i].priority<newPriority) return false;
 			heap[i].priority = newPriority;
 			moveDown(i);
@@ -134,26 +135,26 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 
 	@Override
 	public void remove(V element) {
-		if(indiceUltimo<=0) throw new IllegalArgumentException();
+		if(last<=0) throw new IllegalArgumentException();
 		int i= position.get(element);
-		heap[i] = heap[indiceUltimo-1];
-		indiceUltimo=indiceUltimo-1;
+		heap[i] = heap[last-1];
+		last=last-1;
 		moveDown(i);
 	}
 	
 	public void printHeap(){
-		for(int i = 0;i<indiceUltimo;i++){
+		for(int i = 0;i<last;i++){
 			position.toString();
 			//System.out.println("Elemento: "+heap[i].element+" , Priorit�: "+heap[i].priority+" indice nell'hash: "+position.get(heap[i].element));
 		}
 	}
 	public void printHash(){
-		for(int i = 0;i<indiceUltimo;i++)
+		for(int i = 0;i<last;i++)
 			System.out.println("hash: "+position.get(heap[i].element)+"elemnto: "+heap[position.get(heap[i].element)].element);
 	}
 	
 	public void printInTree(){
-		for(int i = 0; i<indiceUltimo;i++){
+		for(int i = 0; i<last;i++){
 			System.out.println("padre: "+heap[(i-1)/2].element);
 			System.out.println("figlio sinistro: "+heap[(2*i)+1].element+" di padre: "+heap[(i-1)/2].element);
 			System.out.println("figlio destro: "+heap[(2*i)+2].element+" di padre: "+heap[(i-1)/2].element);
