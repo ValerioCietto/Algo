@@ -4,7 +4,7 @@ package priorityqueue;
 import java.util.*;
 
 /**
- * Heap implementato come coda di priorit�, con heap a partire dall'indice 0
+ * Heap implementato come coda di priorità, con heap a partire dall'indice 0
  * indici:
  * 	-Padre: (i-1)/2
  * 	-Sinistro: (2*i)+1
@@ -13,28 +13,28 @@ import java.util.*;
 
 public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	
-	private class ElemConPrior<V>{
+	private class Element<V>{
 		V element;
 		double priority;
-		ElemConPrior(V el,double p){
+		Element(V el,double p){
 			element=el;
 			priority=p;
 		}
 	}
 	
-	ElemConPrior<V>[]heap;
+	Element<V>[]heap;
 	int indiceUltimo;
 	HashMap<V,Integer> position;
 	
 	/**
-	 * Costruttore della coda con priorit�
+	 * Costruttore della coda con priorità
 	 *@param n : grandezza della coda -1
 	 *@param heap : array di elemConPrio, di lunghezza n+1;
 	 *@param indiceUltimo : posizione dell'ultimo elemento, con priorit� massima
-	 *@param position : tabella di hash che associa ad una stringa({@link sabatino.esercizio15.PriorityQueue.HeapPriorityQueue.ElemConPrior.element} un valore Integer, ovvero l'indice dell'elemento nell'array heap
+	 *@param position : tabella di hash che associa ad una stringa({@link sabatino.esercizio15.PriorityQueue.HeapPriorityQueue.Element.element} un valore Integer, ovvero l'indice dell'elemento nell'array heap
 	 * */
 	public HeapPriorityQueue(int n){
-		heap = new ElemConPrior[n+1];
+		heap = new Element[n+1];
 		indiceUltimo = 0;
 		position = new HashMap<V,Integer>(); 
 	}
@@ -45,7 +45,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	 * */
 	private void moveUp(int i){
 		if(i >= indiceUltimo) throw new IllegalArgumentException();
-		ElemConPrior ep = heap[i];
+		Element ep = heap[i];
 		while(i>0){
 			if(ep.priority>=heap[(i-1)/2].priority)//lo fa in caso la priorit� dell'elemnto � pi� grande di quella del padre
 				break;
@@ -59,7 +59,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	
 	private void moveDown(int i){
 		if(i > indiceUltimo) throw new IllegalArgumentException();
-			ElemConPrior el = heap[i];
+			Element el = heap[i];
 			int j;
 			while((j=(2*i)+1)<=indiceUltimo){
 				if(j+1<=indiceUltimo && heap[j+1].priority<heap[j].priority) 
@@ -83,7 +83,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 		if(indiceUltimo==heap.length) rialloca();
 		
 		if(!position.containsKey(element)){	
-			heap[indiceUltimo] = new ElemConPrior(element,priority);
+			heap[indiceUltimo] = new Element(element,priority);
 			position.put(element, indiceUltimo);
 			indiceUltimo++;
 			moveUp(indiceUltimo-1);
@@ -92,7 +92,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 	}
 
 	public void rialloca(){
-		ElemConPrior[] nuovo = new ElemConPrior[(heap.length*2)+1]; 
+		Element[] nuovo = new Element[(heap.length*2)+1]; 
 		for(int i = 0;i<heap.length;i++)
 			nuovo[i]=heap[i];
 		heap = nuovo;
@@ -103,7 +103,7 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 		if(indiceUltimo==0) throw new IllegalArgumentException();
 		V first = heap[0].element;
 		position.put(null, indiceUltimo);
-		ElemConPrior last = heap[indiceUltimo-1];
+		Element last = heap[indiceUltimo-1];
 		heap[indiceUltimo--] = null;
 		if(indiceUltimo>=0){
 			heap[0]=last;

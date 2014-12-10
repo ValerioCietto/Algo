@@ -1,10 +1,10 @@
 package priorityqueue;
 
-public class ElemConPrior<V> {
+public class Element<V> {
 	
 		V element;
 		double priority;
-		ElemConPrior(V el,double p){
+		Element(V el,double p){
 			element=el;
 			priority=p;
 		
