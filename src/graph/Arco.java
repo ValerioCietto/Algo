@@ -23,18 +23,8 @@ public class Arco<V,E>{
 		this.fin = fin;
 		this.weight=1;
 	}
-	/**
-	 * 
-	 * @param info
-	 * @param in
-	 * @param fin
-	 */
-	public Arco(E info,V in, V fin){
-		this.info = info;
-		this.in = in;
-		this.fin = fin;
-		this.weight=1;
-	}
+	
+	
 	/**
 	 * 
 	 * @param info
@@ -48,6 +38,14 @@ public class Arco<V,E>{
 		this.fin = fin;
 		this.weight = weight;
 	}
+	public Arco(E info2, V v1, V v2) {
+		this.info = info;
+		this.in = in;
+		this.fin = fin;
+		this.weight = weight;
+	}
+
+
 	/**
 	 * 
 	 * @return

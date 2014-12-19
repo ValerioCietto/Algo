@@ -51,7 +51,7 @@ public class SparseGraph<V,E> implements Graph<V,E>{
 		if(nodi.contains(v1)){
 			if(!nodi.contains(v1)) addVertex(v1);
 			if(!nodi.contains(v2)) addVertex(v2);
-			Arco<V,E> a = new Arco<V, E>(info,v1,v2);
+			Arco<V,E> a = new Arco<V, E>(info,v1,v2, m);
 			ArrayList<Arco> neighbors = (ArrayList<Arco>)archi.get(v1);
 			neighbors.add(a);
 			m++;
