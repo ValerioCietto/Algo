@@ -42,6 +42,7 @@ public class Test {
 		
 		grafo.ToDot("grafo");
 		
+		
 		GraphVisitImplements<Integer, String> gv = new GraphVisitImplements<Integer, String>();
 		VertexAnalyserImplements<Integer> va = new VertexAnalyserImplements<Integer>();
 		gv.depthFirst(grafo, 4, va);

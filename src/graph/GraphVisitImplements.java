@@ -74,31 +74,6 @@ public class GraphVisitImplements<V,E> implements GraphVisit<V,E> {
 		}
 	}
 	
-	/*	public Graph<V, E> breadthFirst(Graph<V, E> graph, V s, VertexAnalyser<V> va) {///vale solo per grafi connessi
-		F = new LinkedList<V>();
-		ArrayList<V> vertex = graph.vertices();
-		visit = new HashMap<V,Boolean>();	
-		for(V n : vertex){
-			visit.put(n, false);
-		}
-		F.add(s);
-		visit.put(s, true);
-		//inizio visita s
-		//va.analyse(s);
-		
-		while(!F.isEmpty()){
-			V nodo = F.remove();
-			//fine visita nodo
-			va.analyse(nodo);
-			for(V adj:graph.neighbors(nodo)){
-				if(!visit.get(adj)){
-					F.add(adj);
-					visit.put(adj, true);
-					//inizio visita adj
-				}
-			}
-		}
-		return graph;//da controllare il valore di ritorno
-	}*/
+	
 
 }

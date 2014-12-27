@@ -14,4 +14,5 @@ public interface Graph<V, E> {
 	double getWeight(V source, V dest);
 	ArrayList<V> vertices();
 	ArrayList<V> neighbors(V vertex);
+	
 }

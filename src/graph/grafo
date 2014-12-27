@@ -1,0 +1,10 @@
+graph dot{
+a->b[label="10"]
+b->c[label="2"]
+a->d[label="4"]
+d->s[label="1"]
+e->f[label="6"]
+b->e[label="3"]
+f->s[label="11"]
+b->g[label="8"]
+}
