@@ -41,7 +41,8 @@ public class BinSearchTreeGUI extends JFrame {
 	    System.out.println(tree.is1Balanced());
 	    insButton.addActionListener(
 	      new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
+	        @Override
+			public void actionPerformed(ActionEvent e) {
 	          String nome = text1.getText().trim();
 	          int num = Integer.parseInt(text2.getText());
 	          tree.put(new Elem(nome, num));
@@ -55,7 +56,8 @@ public class BinSearchTreeGUI extends JFrame {
 
 	    delButton.addActionListener(
 	      new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
+	        @Override
+			public void actionPerformed(ActionEvent e) {
 	          int key = Integer.parseInt(text2.getText());
 	          tree.remove(key);
 	          repaint();
@@ -66,7 +68,8 @@ public class BinSearchTreeGUI extends JFrame {
 
 	    searchButton.addActionListener(
 	      new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
+	        @Override
+			public void actionPerformed(ActionEvent e) {
 	          int key = Integer.parseInt(text2.getText());
 	          Elem elem = (Elem) tree.get(key);
 	          if(elem == null) text1.setText("chiave non presente");
@@ -103,13 +106,15 @@ public class BinSearchTreeGUI extends JFrame {
 	}
 
 	private class FiltroTxt extends javax.swing.filechooser.FileFilter {
-	    public boolean accept(File file) {
+	    @Override
+		public boolean accept(File file) {
 	      if (file.isDirectory()) return true;
 	      else
 	        return file.getName().endsWith(".txt");
 	    }
 
-	    public String getDescription() {
+	    @Override
+		public String getDescription() {
 	      return "*.txt";
 	    }
 	  }

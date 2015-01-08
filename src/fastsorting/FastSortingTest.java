@@ -43,13 +43,13 @@ public class FastSortingTest {
 
 	}
 	public static long time(Algorithm algo,int[]array){
-		c.reset();
+		Cronometro.reset();
 		int[] a = new int[array.length];
 		copyArray(array,a);
-		c.start();
+		Cronometro.start();
 		sort(algo,a);
-		c.stop();
-		return c.getElapsedTime() ;
+		Cronometro.stop();
+		return Cronometro.getElapsedTime() ;
 	}
 	public static void sort(Algorithm algo,int[]array){
 		switch(algo) {

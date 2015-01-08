@@ -13,13 +13,13 @@ import java.util.HashMap;
  */
 public class DenseGraph<V, E> implements Graph{
 	ArrayList<V> nodi;	
-	HashMap<V,ArrayList<E>> archi;
-	int n;//numero di nodi
-	int m;//numero di archi
+	HashMap<V,ArrayList<Arco<V,E>>> archi;
+	private int n;//numero di nodi
+	private int m;//numero di archi
 	
 	public DenseGraph(){
 		nodi = new ArrayList<V>();
-		archi = new HashMap<V, ArrayList<E>>();
+		archi = new HashMap<V, ArrayList<Arco<V,E>>>();
 		n = 0;
 		m = 0;
 	}
@@ -29,8 +29,8 @@ public class DenseGraph<V, E> implements Graph{
 		if(!nodi.contains(vertex)){
 			nodi.add((V) vertex);
 			n++;
-			ArrayList<E> neighbors = new ArrayList<E>();
-			archi.put((V) vertex,(ArrayList<E>) neighbors);
+			ArrayList<Arco<V, E>> neighbors = new ArrayList<Arco<V,E>>();
+			archi.put((V)vertex, neighbors);
 			return true;
 		}
 		return false;
@@ -38,16 +38,16 @@ public class DenseGraph<V, E> implements Graph{
 
 	@Override
 	public boolean addEdge(Object v1, Object v2, Object info) {
-		if(nodi.contains(v1)){
-			if(!nodi.contains(v1)) addVertex(v1);
-			if(!nodi.contains(v2)) addVertex(v2);
-			Arco<V,E> a = new Arco<V, E>((E)info,(V)v1,(V)v2);
-			ArrayList<Arco> neighbors = (ArrayList<Arco>)archi.get(v1);
-			neighbors.add(a);
-			m++;
-			return true;
-		}
-		return false;
+		
+		if(!nodi.contains(v1)) addVertex(v1);
+		if(!nodi.contains(v2)) addVertex(v2);
+		Arco<V,E> a = new Arco<V, E>((E)info,(V)v1,(V)v2,0.0);
+		ArrayList<Arco<V, E>> neighbors = (ArrayList<Arco<V, E>>)archi.get(v1);
+		neighbors.add(a);
+		m++;
+		return true;
+		
+		
 	}
 
 	@Override
@@ -67,8 +67,8 @@ public class DenseGraph<V, E> implements Graph{
 
 	@Override
 	public boolean addUndirectedEdge(Object v1, Object v2, Object info) {
-		addEdge(v1,v2,info);
-		addEdge(v2,v1,info);
+		addEdge(v1,v2,0.0,info);
+		addEdge(v2,v1,0.0,info);
 		return false;
 	}
 
@@ -98,19 +98,22 @@ public class DenseGraph<V, E> implements Graph{
 		}
 		return false;
 	}
-
 	@Override
 	public double getWeight(Object source, Object dest) {
-		return getEdge(source,dest).getWeight();
+		return getEdge((V)source,(V)dest).getWeight();
 		
 	}
 
-	private Arco<V, E> getEdge(Object source, Object dest) {
-		ArrayList<Arco> neighbors = (ArrayList<Arco>)archi.get(source);
-		Arco find = new Arco(source,dest);
+	private Arco<V, E> getEdge(V source, V dest) {
+		ArrayList<Arco<V, E>> neighbors = new ArrayList<Arco<V, E>>();
+		neighbors = (ArrayList<Arco<V, E>>)archi.get(source);
+		
 		for(Arco<V,E> a : neighbors){
-			if((a.fin.equals(find.fin))&&(a.in.equals(find.in)))
+			
+			if((a.fin.equals(dest))&&(a.in.equals(source))){
+				
 				return a;
+			}	
 		}
 		return null;
 	}
@@ -122,14 +125,22 @@ public class DenseGraph<V, E> implements Graph{
 	}
 
 	
-	@Override
 	public ArrayList neighbors(Object vertex) {
 		if(nodi.contains(vertex)){
-			ArrayList<Arco> neighbors = (ArrayList<Arco>)archi.get(vertex);
+			ArrayList<Arco<V,E>> neighbors = (ArrayList<Arco<V,E>>)archi.get(vertex);
 			return neighbors;
 		}
 		return null;
 	}
+	
+	public int getNumberOfArcs(){
+		return this.m;
+	}
+	
+	public int getNumberOfNodes(){
+		return this.n;
+	}
+	
 	
 
 }

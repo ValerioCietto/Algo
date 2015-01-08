@@ -12,6 +12,7 @@ public class GraphVisitImplements<V,E> implements GraphVisit<V,E> {
 	HashMap<V,Boolean>visit;
 	Stack<V> stack;
 	ArrayList<V>padri;
+	@Override
 	public Graph<V, E> breadthFirst(Graph<V, E> graph, V s, VertexAnalyser<V> va) {///mancano i padri
 		padri = new ArrayList<V>();
 		ArrayList<V> vertex = graph.vertices();

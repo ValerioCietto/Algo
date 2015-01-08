@@ -38,6 +38,11 @@ public class Arco<V,E>{
 		this.fin = fin;
 		this.weight = weight;
 	}
+	public Arco(V in, V fin,double weight){
+		this.in = in;
+		this.fin = fin;
+		this.weight = weight;
+	}
 	public Arco(E info2, V v1, V v2) {
 		this.info = info;
 		this.in = in;

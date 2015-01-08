@@ -37,7 +37,7 @@ public class SparseGraph<V,E> implements Graph<V,E>{
 			nodi.add(vertex);
 			n++;
 			ArrayList<E> neighbors = new ArrayList<E>();
-			archi.put(vertex,(ArrayList<E>) neighbors);
+			archi.put(vertex,neighbors);
 			return true;
 		}
 		

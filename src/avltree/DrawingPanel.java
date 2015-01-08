@@ -60,7 +60,8 @@ public class DrawingPanel extends JPanel {
     }
   }
 
-  public void paintComponent(Graphics g) {
+  @Override
+public void paintComponent(Graphics g) {
     super.paintComponent(g);
     graphics = g;
     Node dt = build(tree.root,1);
