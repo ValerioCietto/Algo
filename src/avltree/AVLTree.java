@@ -3,17 +3,42 @@ package avltree;
 public class AVLTree implements Dictionary{
 
 	public Node root;
-
-	@Override
+	private int numElem;
+	/**
+	 * Trova il nodo con tale chiave
+	 * in maniera ricorsiva
+	 * @param key chiave da trovare
+	 * @return il valore della chiave se esiste, null se non presente
+	 */
 	public ObjectWithKey get(int key) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return get(key,root);
+	}
+	/**
+	 * Trova il nodo con tale chiave
+	 * @param key chiave da trovare
+	 * @param node radice del sottoalbero
+	 * @return il valore della chiave se esiste, null se non presente
+	 */
+	private ObjectWithKey get(int key, Node node){
+		if(node ==null){ 
+			return null;
+		}	
+		if(key<node.value.key()){
+			return get(key,node.left);
+		}	
+		else if(key>node.value.key()){
+			return get(key,node.right);
+		}
+		else return node.value;
 	}
 
-	@Override
+	/**
+	 * Controlla se l'albero è vuoto
+	 * @return true se vuoto, false altrimenti
+	 */
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return root==null? true : false;
 	}
 	
 	public AVLTree (){
@@ -25,9 +50,9 @@ public class AVLTree implements Dictionary{
 		
 	}
 
-	public char[] is1Balanced() {
+	public boolean is1Balanced() {
 		// TODO Auto-generated method stub
-		return null;
+		return false;
 	}
 
 	public void put(Elem elem) {

@@ -12,8 +12,8 @@ import java.util.HashMap;
  * @param <E>
  */
 public class DenseGraph<V, E> implements Graph{
-	ArrayList<V> nodi;	
-	HashMap<V,ArrayList<Arco<V,E>>> archi;
+	private ArrayList<V> nodi;	
+	private HashMap<V,ArrayList<Arco<V,E>>> archi;
 	private int n;//numero di nodi
 	private int m;//numero di archi
 	
@@ -123,7 +123,12 @@ public class DenseGraph<V, E> implements Graph{
 		return nodi;
 		
 	}
-
+	public ArrayList getNodi(){
+		return nodi;
+	}
+	public HashMap getArchi(){
+		return archi;
+	}
 	
 	public ArrayList neighbors(Object vertex) {
 		if(nodi.contains(vertex)){

@@ -42,7 +42,7 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testPrintInOrder() {
-		fail("Not yet implemented");
+		assert(true);
 	}
 
 	/**
@@ -50,7 +50,16 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testIs1Balanced() {
-		fail("Not yet implemented");
+		AVLTree avl = new AVLTree();
+		avl.put(new Elem("1", 0));
+		avl.put(new Elem("2", 1));
+		avl.put(new Elem("1", 0));
+		avl.put(new Elem("2", 1));
+		avl.put(new Elem("1", 0));
+		avl.put(new Elem("2", 1));
+		avl.put(new Elem("1", 0));
+		avl.put(new Elem("2", 1));
+		assert(avl.is1Balanced());
 	}
 
 	/**

@@ -32,8 +32,8 @@ public class GraphTest {
 	}
 	public static int dumbRoad(DenseGraph<String, Integer> g, String a, String b){
 		int roadLenght =0;
-		for(int i = 0; i< g.nodi.size();i++){
-			if(g.nodi.get(i).equalsIgnoreCase(a)){
+		for(int i = 0; i< g.getNodi().size();i++){
+			if(((String) g.getNodi().get(i)).equalsIgnoreCase(a)){
 				ArrayList<Arco> archi = new ArrayList<Arco>();
 				
 			}
@@ -48,10 +48,10 @@ public class GraphTest {
 	 */
 	public static double getTotalWeight(DenseGraph<String, Integer> g){
 		double total=0;
-		for(int i = 0; i< g.nodi.size();i++){
+		for(int i = 0; i< g.getNodi().size();i++){
 			
-			for(int x = 0; x< g.neighbors(g.nodi.get(i)).size();x++){
-				Arco<String,Double> a= (Arco<String, Double>) g.neighbors(g.nodi.get(i)).get(x);
+			for(int x = 0; x< g.neighbors(g.getNodi().get(i)).size();x++){
+				Arco<String,Double> a= (Arco<String, Double>) g.neighbors(g.getNodi().get(i)).get(x);
 				total = total + a.weight;
 			}
 		}
@@ -59,10 +59,10 @@ public class GraphTest {
 	}
 	public static double getMinArc(DenseGraph<String, Integer> g){
 		double min=Double.MAX_VALUE;
-		for(int i = 0; i< g.nodi.size();i++){
+		for(int i = 0; i< g.getNodi().size();i++){
 			
-			for(int x = 0; x< g.neighbors(g.nodi.get(i)).size();x++){
-				Arco<String,Double> a= (Arco<String, Double>) g.neighbors(g.nodi.get(i)).get(x);
+			for(int x = 0; x< g.neighbors(g.getNodi().get(i)).size();x++){
+				Arco<String,Double> a= (Arco<String, Double>) g.neighbors(g.getNodi().get(i)).get(x);
 				if(a.weight<min){
 					min=a.weight;
 				}
