@@ -82,7 +82,7 @@ public class BinSearchTreeGUI extends JFrame {
 
 	  public void draw() {
 	    GraphicsEnvironment ge = getLocalGraphicsEnvironment();
-	    Rectangle bounds = ge.getMaximumWindowBounds();
+	    Rectangle bounds = new Rectangle(1000,800);//ge.getMaximumWindowBounds();
 	    int x = bounds.x + bounds.width/4;
 	    int y = bounds.y + bounds.height/4;
 	    setBounds(x,y,2*bounds.width/3,2*bounds.height/3);

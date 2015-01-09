@@ -6,8 +6,7 @@ public class Elem implements ObjectWithKey{
 	
 	@Override
 	public int key() {
-		// TODO Auto-generated method stub
-		return 0;
+		return key;
 	}
 	
 	public Elem( String elem, int key){

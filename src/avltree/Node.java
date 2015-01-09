@@ -13,12 +13,12 @@ public class Node {
 		height=0;
 	}
 	Node(ObjectWithKey element, int x, int y, int width, int heightDraw, Node left, Node right) {
-    value = element;
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.heightDraw = heightDraw;
-    this.left = left;
-    this.right = right;
+	    value = element;
+	    this.x = x;
+	    this.y = y;
+	    this.width = width;
+	    this.heightDraw = heightDraw;
+	    this.left = left;
+	    this.right = right;
   }
 }
