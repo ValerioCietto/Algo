@@ -18,7 +18,24 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testGet() {
-		fail("Not yet implemented");
+		AVLTree tree = new AVLTree();
+		Elem a = new Elem("a", 5);
+		Elem b = new Elem("b", 12);
+		Elem c = new Elem("c", 6);
+		Elem d = new Elem("d", 1);
+		Elem e = new Elem("e", 4);
+		Elem f = new Elem("f", 15);
+		Elem g = new Elem("g", 8);
+		Elem h = new Elem("h", 9);
+		tree.put(a);
+		tree.put(b);
+		tree.put(c);
+		tree.put(d);
+		tree.put(e);
+		tree.put(f);
+		tree.put(g);
+		tree.put(h);
+		assert(tree.get(6).key()==6);
 	}
 
 	/**
@@ -26,7 +43,8 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testIsEmpty() {
-		fail("Not yet implemented");
+		AVLTree tree = new AVLTree();
+		assert(tree.isEmpty());
 	}
 
 	/**
@@ -34,7 +52,8 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testAVLTree() {
-		fail("Not yet implemented");
+		AVLTree tree = new AVLTree();
+		assert(tree!=null);
 	}
 
 	/**
@@ -67,7 +86,9 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testPut() {
-		fail("Not yet implemented");
+		AVLTree avl = new AVLTree();
+		avl.put(new Elem("1", 0));
+		assert(avl.root.height==0);
 	}
 
 	/**
@@ -75,7 +96,10 @@ public class AVLTreeTest {
 	 */
 	@Test
 	public void testRemove() {
-		fail("Not yet implemented");
+		AVLTree avl = new AVLTree();
+		avl.put(new Elem("1", 0));
+		avl.remove(0);
+		assert(avl.isEmpty());
 	}
 
 }
