@@ -1,3 +1,4 @@
+package ricercaBinaria;
 
 public class RicercaBinaria {
 
