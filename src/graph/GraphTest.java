@@ -27,13 +27,13 @@ public class GraphTest {
 		System.out.println(getMinArc(df));
 		System.out.println(getNumberOfArcs(df));
 		System.out.println("reading");
-		
-		
 	}
+	
 	public static int dumbRoad(DenseGraph<String, Integer> g, String a, String b){
 		int roadLenght =0;
 		for(int i = 0; i< g.getNodi().size();i++){
 			if(((String) g.getNodi().get(i)).equalsIgnoreCase(a)){
+				
 				ArrayList<Arco> archi = new ArrayList<Arco>();
 				
 			}
