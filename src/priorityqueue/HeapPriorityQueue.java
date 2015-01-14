@@ -39,6 +39,18 @@ public class HeapPriorityQueue<V> implements PriorityQueue<V> {
 		last = 0;
 		position = new HashMap<V,Integer>(); 
 	}
+	/**
+	 * Costruttore della coda con priorità
+	 *@param n : grandezza della coda -1
+	 *@param heap : array di elemConPrio, di lunghezza n+1;
+	 *@param last : posizione dell'ultimo elemento, con priorit� massima
+	 *@param position : tabella di hash che associa ad una stringa({@link sabatino.esercizio15.PriorityQueue.HeapPriorityQueue.Element.element} un valore Integer, ovvero l'indice dell'elemento nell'array heap
+	 * */
+	public HeapPriorityQueue(){
+		heap = new Element[10];
+		last = 0;
+		position = new HashMap<V,Integer>(); 
+	}
 	
 	/**
 	 * funzione di moveUp, che in caso di elemento fuori posto lo fa salire in alto fino al posto giusto
