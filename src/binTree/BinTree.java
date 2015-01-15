@@ -25,6 +25,15 @@ public class BinTree {
 	public int getData(){
 		return dato;
 	}
+	public boolean isLeaf(){
+		return left == null && right == null;
+	}
+	public int sumNodes(BinTree t){
+		if(t!=null){
+			return this.dato+sumNodes(left)+sumNodes(right);
+		}
+		return 0;
+	}
 	
 	public void inorder(BinTree t) {
 		if (t != null) {
