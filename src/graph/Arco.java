@@ -51,6 +51,14 @@ public class Arco<V,E>{
 	}
 
 
+	public Arco(V source, V dest, double peso, E info2) {
+		this.info = info2;
+		this.in = source;
+		this.fin = dest;
+		this.weight = peso;
+	}
+
+
 	/**
 	 * 
 	 * @return

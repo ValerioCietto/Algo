@@ -127,19 +127,29 @@ public class SparseGraphSimple<V,E> implements Graph<V,E>{
 
 	@Override
 	public ArrayList<V> neighbors(V vertex) {
-//	    if(nodi.contains(vertex)){
-//		    ArrayList<V> neighbors = new ArrayList<V>();
-//		    ArrayList<Arco> arch = (ArrayList<Arco>)archi.get(vertex);
-//	
-//		    for(Arco a: arch)
-//		        neighbors.add((V) a.fin);
-//		    return neighbors;
-//	    }
+	    if(nodi.contains(vertex)){
+		    ArrayList<V> neighbors = new ArrayList<V>();
+		    int indice = nodi.indexOf(vertex);
+		    for(int i = 0; i< nodi.get(indice).vicini.size();i++){
+				neighbors.add((V)nodi.get(indice).vicini.get(i).dato);
+			}
+		    return neighbors;
+	    }
 	    return null;
 	}
 	
-	public Arco getEdge(V source, V dest){
-		
+	public Arco<V, E> getEdge(V source, V dest){
+		if(nodi.contains(source)){
+			if(nodi.contains(dest)){
+				int index = nodi.indexOf(source);
+				int indexDest = nodi.get(index).vicini.indexOf(dest);
+				
+				double peso = nodi.get(index).pesiVicini.get(indexDest);
+				E info = nodi.get(index).infoVicini.get(indexDest);
+				Arco<V, E> arco = new Arco<V, E>(source, dest, peso, info);
+				return arco;
+			}
+		}
 		return null;
 	}
 
