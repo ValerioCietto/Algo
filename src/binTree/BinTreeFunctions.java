@@ -70,6 +70,15 @@ public class BinTreeFunctions {
 		}
 		return 0;
 	}
+	public static int numNodi(BinTree t, int lev){
+		if(t!=null){
+			if(lev>0){
+				return numNodi(t.left, lev-1)+1+numNodi(t.right,lev-1);
+			}
+			else return 0;
+		}
+		else return 0;
+	}
 	public static boolean addRandomNode(BinTree t, int n){
 		
 		if(t!=null){

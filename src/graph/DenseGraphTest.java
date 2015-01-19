@@ -24,22 +24,11 @@ public class DenseGraphTest {
 	}
 
 	@Test
-	public void testAddEdgeObjectObjectDoubleObject() {
-		DenseGraph<String, Double> test = new DenseGraph<String, Double>();
-
-	}
-
-	@Test
 	public void testAddUndirectedEdgeObjectObjectObject() {
 		DenseGraph<String, Double> test = new DenseGraph<String, Double>();
 
 	}
-
-	@Test
-	public void testAddUndirectedEdgeObjectObjectDoubleObject() {
-		DenseGraph<String, Double> test = new DenseGraph<String, Double>();
-
-	}
+	
 
 	@Test
 	public void testHasVertex() {

@@ -10,7 +10,7 @@ public class UnionFindInt {
 	 * struttura
 	 * 
 	 * @param n
-	 *            int dimensione della struttura dati, implementato come array
+	 * int dimensione della struttura dati, implementato come array
 	 */
 	UnionFindInt(int n) {
 		parentOrNSize = new int[n];
