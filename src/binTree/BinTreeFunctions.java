@@ -36,7 +36,7 @@ public class BinTreeFunctions {
 		if(t!=null){
 			int leftMin = findMin(t.left);
 			int rightMin = findMin(t.right);
-			return (leftMin>rightMin)?rightMin:leftMin;
+			return ((leftMin>rightMin)?rightMin:leftMin);
 		}
 		return Integer.MAX_VALUE;
 	}
@@ -44,7 +44,7 @@ public class BinTreeFunctions {
 		if(t!=null){
 			int leftMax = findMin(t.left);
 			int rightMax = findMin(t.right);
-			return (leftMax<rightMax)?rightMax:leftMax;
+			return ((leftMax<rightMax)?rightMax:leftMax);
 		}
 		return Integer.MIN_VALUE;
 	}
@@ -64,24 +64,40 @@ public class BinTreeFunctions {
 			incNodes(t.right, n);
 		}
 	}
-	public static boolean addRandomNode(BinTree t, int n){
+	public static int numLevels(BinTree t){
 		if(t!=null){
-			Random r = new Random(4);
-			int decision = r.nextInt();
+			return Math.max(numLevels(t.left), numLevels(t.right))+1;
+		}
+		return 0;
+	}
+	public static boolean addRandomNode(BinTree t, int n){
+		
+		if(t!=null){
+			
+			Random r = new Random();
+			int decision = r.nextInt(2);
+			
 			switch (decision){
 			    case 0:
-			    	return addRandomNode(t.left, n);
-			    	
+			    	if(t.left!=null){
+			    		return addRandomNode(t.left, n);
+			    	}
+			    	else{
+			    		t.left = new BinTree(n);
+			    		System.out.println("node added left");
+				    	return true;
+			    	}
 			    case 1:
-			    	return addRandomNode(t.right, n);
+			    	if(t.right!=null){
+			    		return addRandomNode(t.right, n);
+			    	}
+			    	else{
+			    		t.right = new BinTree(n);
+			    		System.out.println("node added right");
+				    	return true;
+			    	}
 			    	
-			    case 2:
-			    	t.left = new BinTree(n);
-			    	return true;
-			    	
-			    case 3:
-			    	t.right = new BinTree(n);
-			    	return true;
+			    
 			    	
 			}
 				
