@@ -85,7 +85,7 @@ public class BinSearchTreeGUI extends JFrame {
 	    Rectangle bounds = new Rectangle(1000,800);//ge.getMaximumWindowBounds();
 	    int x = bounds.x + bounds.width/4;
 	    int y = bounds.y + bounds.height/4;
-	    setBounds(x,y,2*bounds.width/3,2*bounds.height/3);
+	    setBounds(x,y,8*bounds.width/3,2*bounds.height/3);
 	    add(BorderLayout.CENTER, new DrawingPanel(tree));
 	    controlPanel.add(searchButton);
 	    controlPanel.add(delButton);

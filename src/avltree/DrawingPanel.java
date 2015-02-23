@@ -11,8 +11,8 @@ public class DrawingPanel extends JPanel {
   AVLTree tree;  
   private int fromLeftMargin = 2;// visitedNodeNumber = 1;
   private Graphics graphics;
-  //private int hScale = 40;
-  private int vScale = 40;
+  private int hScale = 40;
+  private int vScale = 20;
   
   DrawingPanel(AVLTree t) {
     tree = t;
@@ -39,22 +39,22 @@ public class DrawingPanel extends JPanel {
   void draw(Node dt) {
     if(dt != null) {
       String str = dt.value.toString();
-      graphics.drawRect(dt.x, dt.y, dt.width, dt.height);
+      graphics.drawRect(dt.x-2, dt.y-13, dt.width+2, dt.height+12);
       graphics.drawString(str, dt.x+1, dt.y + dt.height - 2);
       if(dt.left != null) {
-        int x1 = dt.x + dt.width/2;
+        int x1 = dt.x + dt.width/4;
         int y1 = dt.y + dt.height;
-        int x2 = dt.left.x + dt.left.width/2;
+        int x2 = dt.left.x + dt.left.width/4;
         int y2 = dt.left.y;
-        graphics.drawLine(x1, y1, x2, y2);
+        graphics.drawLine(x1, y1, x2, y2-12);
       }
       draw(dt.left);
       if(dt.right != null) {
-        int x1 = dt.x + dt.width/2;
+        int x1 = dt.x + dt.width/4;
         int y1 = dt.y + dt.height;
-        int x2 = dt.right.x + dt.right.width/2;
+        int x2 = dt.right.x + dt.right.width/4;
         int y2 = dt.right.y;
-        graphics.drawLine(x1, y1, x2, y2);
+        graphics.drawLine(x1, y1, x2, y2-12);
       }
       draw(dt.right);
     }

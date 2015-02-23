@@ -16,6 +16,6 @@ public class Elem implements ObjectWithKey{
 	
 	@Override
 	public String toString() {
-	    return "chiave "+key + "; elemento " + elem;
+	    return ""+key + "; " + elem;
 	}
 }
